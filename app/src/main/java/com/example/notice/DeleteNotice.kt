@@ -15,8 +15,8 @@ class DeleteNotice : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var list: ArrayList<NoticeData>
     private lateinit var adapter: NoticeAdapter
-
     private lateinit var dbref : DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delete_notice)
@@ -43,10 +43,10 @@ class DeleteNotice : AppCompatActivity() {
                             list.add(data)
                         }
                     }
-                   adapter = NoticeAdapter(list, this@DeleteNotice)
+                   adapter = NoticeAdapter(list, this@DeleteNotice,recyclerView)
                    progressBar.visibility = View.GONE
                    recyclerView.adapter = adapter
-                }
+                     }
 
                 override fun onCancelled(error: DatabaseError) {
                     progressBar.visibility = View.GONE

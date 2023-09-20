@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -126,7 +127,7 @@ class UploadNotice : AppCompatActivity() {
                 Toast.makeText(this, "Notice uploaded!", Toast.LENGTH_SHORT).show()
                 binding.fileName.text=""
                 binding.noticeTitle.text?.clear()
-                binding.noticeImageView.setImageResource(android.R.color.transparent)
+                binding.noticeImageView.visibility = View.GONE
             }.addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
