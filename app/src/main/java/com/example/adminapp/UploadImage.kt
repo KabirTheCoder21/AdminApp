@@ -48,6 +48,10 @@ class UploadImage : AppCompatActivity() {
         val items : List<String> = listOf("Select Category","Convocation","Independence Day","Other Events")
         val adapter = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,items)
 
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+
         binding.imageCategory.adapter = adapter
         binding.imageCategory.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener
         {
@@ -86,7 +90,7 @@ class UploadImage : AppCompatActivity() {
         val compressImage = outputStream.toByteArray()
 
         // Generate a unique filename, for example, using a timestamp
-        val timestamp = System.currentTimeMillis().toString()
+        //val timestamp = System.currentTimeMillis().toString()
         val filename = imageFileName
         val filePath: StorageReference = storageReference.child(filename)
         val uploadTask: UploadTask = filePath.putBytes(compressImage)
@@ -113,6 +117,9 @@ class UploadImage : AppCompatActivity() {
             databaseReference.child(uniqueKey).setValue(downloadUrl).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Image uploaded!", Toast.LENGTH_SHORT).show()
+                binding.fileName.text=""
+                binding.imageCategory.setSelection(0)
+                binding.galleryImageView.setImageResource(android.R.color.transparent)
             }.addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
@@ -131,6 +138,7 @@ class UploadImage : AppCompatActivity() {
         {
             val imageUri : Uri? = data?.data
             imageFileName = getImageName(imageUri)
+            binding.fileName.text = imageFileName
             val contentResolver: ContentResolver = this.contentResolver
             bitmap = imageUri?.let { uriToBitmap(contentResolver, it) }
 

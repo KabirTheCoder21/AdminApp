@@ -49,6 +49,9 @@ class UploadPdfActivity : AppCompatActivity() {
         binding.selectPdf.setOnClickListener {
             pickImageGallery()
         }
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
         binding.pdfReview.setOnClickListener {
             val pdfUri = Uri.parse(pdfData.toString())
             binding.pdfView.visibility = View.VISIBLE
@@ -101,6 +104,10 @@ class UploadPdfActivity : AppCompatActivity() {
             databaseReference.child("pdf").child(uniqueKey).setValue(data).addOnCompleteListener{
                progressDialog.dismiss()
                 Toast.makeText(this, "pdf uploaded successfully", Toast.LENGTH_SHORT).show()
+                binding.pdfTv.text=""
+                binding.pdfTitle.text?.clear()
+                binding.pdfView.visibility = View.GONE
+//                binding.pdfView.finis
             }.addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Failed to upload pdf", Toast.LENGTH_SHORT).show()

@@ -9,7 +9,19 @@
             android:layout_margin="4dp"
             tools:context="com.example.notice.UploadNotice">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Upload PDF"
+                android:textColor="@color/white"
+                android:textStyle="bold"
 
+                android:background="@color/purple_200"
+                android:textSize="25sp"/>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="140dp"
                 android:layout_height="160dp"
@@ -85,11 +97,12 @@
                     android:hint="PDF Title" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Upload PDF"
                 android:layout_marginTop="9dp"
                 android:textAllCaps="false"
+                android:layout_gravity="center"
                 android:background="@drawable/ripple_effect"
                 app:backgroundTintMode="screen"
                 android:backgroundTint="@color/purple_200"

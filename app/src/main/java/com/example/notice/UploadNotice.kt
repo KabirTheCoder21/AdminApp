@@ -9,11 +9,13 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.adminapp.R
 import com.example.adminapp.databinding.ActivityUploadNoticeBinding
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -44,8 +46,18 @@ class UploadNotice : AppCompatActivity() {
         storageReference = FirebaseStorage.getInstance().getReference()
 
         progressDialog = ProgressDialog(this)
+
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+
         binding.selectImage.setOnClickListener {
-            pickImageGallery()
+            //pickImageGallery()
+            ImagePicker.with(this)
+                .crop()
+                .compress(1024)
+                .maxResultSize(1080, 1080)
+                .start(IMAGE_REQUEST_CODE)
         }
         binding.uploadNoticeButton.setOnClickListener{
             if(bitmap==null)
@@ -112,6 +124,9 @@ class UploadNotice : AppCompatActivity() {
             dbRef.child(uniqueKey).setValue(noticeData).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Notice uploaded!", Toast.LENGTH_SHORT).show()
+                binding.fileName.text=""
+                binding.noticeTitle.text?.clear()
+                binding.noticeImageView.setImageResource(android.R.color.transparent)
             }.addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
@@ -119,11 +134,13 @@ class UploadNotice : AppCompatActivity() {
         }
     }
 
-    private fun pickImageGallery() {
+   /* private fun pickImageGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_REQUEST_CODE)
-    }
+    }*/
+
+    */
     private fun uriToBitmap(contentResolver: ContentResolver, imageUri: Uri): Bitmap? {
         try {
             // Open an input stream from the URI
@@ -141,9 +158,47 @@ class UploadNotice : AppCompatActivity() {
             return null
         }
     }
+
+    private fun getImageName(imageUri: Uri?): String {
+        val contentResolver = applicationContext.contentResolver
+        var displayName = ""
+        try {
+            val cursor = imageUri?.let {
+                contentResolver.query(
+                    it,
+                    null,
+                    null,
+                    null,
+                    null
+                )
+            }
+            cursor.use {
+                if (it != null) {
+                    if (it.moveToFirst()) {
+                        val displayNameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                        if (displayNameIndex != -1) {
+                            displayName = it.getString(displayNameIndex)
+                        }
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        if (displayName.isEmpty()) {
+            // If the DISPLAY_NAME column is not available, extract the name from the URI itself
+            val pathSegments = imageUri?.pathSegments
+            if (pathSegments != null) {
+                if (pathSegments.isNotEmpty()) {
+                    displayName = pathSegments.last()
+                }
+            }
+        }
+        return displayName
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode== IMAGE_REQUEST_CODE && resultCode== RESULT_OK)
+        if (requestCode== IMAGE_REQUEST_CODE&&resultCode== RESULT_OK)
         {
             val imageUri : Uri? = data?.data
             val contentResolver: ContentResolver = this.contentResolver
@@ -154,6 +209,8 @@ class UploadNotice : AppCompatActivity() {
                 // Do something with the bitmap, e.g., set it to an ImageView
                 binding.noticeImageView.setImageBitmap(bitmap)
                 binding.noticeImageView.scaleType = ImageView.ScaleType.FIT_CENTER
+               val fname = getImageName(imageUri)
+                binding.fileName.text = fname
             } else {
                 // Handle the case where the conversion failed
                 Toast.makeText(this, "Error pta nhi kyu aa rha hh", Toast.LENGTH_SHORT).show()

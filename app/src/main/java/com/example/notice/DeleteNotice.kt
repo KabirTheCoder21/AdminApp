@@ -23,6 +23,9 @@ class DeleteNotice : AppCompatActivity() {
         recyclerView = findViewById(R.id.deleteNoticeRV)
         progressBar = findViewById(R.id.progressBar)
         dbref = FirebaseDatabase.getInstance().getReference().child("Notice")
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.hasFixedSize()
         getNotice()

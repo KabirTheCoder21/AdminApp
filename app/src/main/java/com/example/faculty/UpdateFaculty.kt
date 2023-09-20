@@ -76,6 +76,10 @@ import kotlinx.coroutines.withContext
 
         reference = FirebaseDatabase.getInstance().getReference().child("Faculty")
 
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+
         binding.fab.setOnClickListener {
             val intent = Intent(this,AddTeacher::class.java)
             startActivity(intent)
