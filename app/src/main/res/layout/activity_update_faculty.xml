@@ -32,18 +32,7 @@
             android:layout_margin="16dp"
 
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Upload Faculty"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:background="#9E943E"
-                android:textSize="25sp"
-                />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="64dp"

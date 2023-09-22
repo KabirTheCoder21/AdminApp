@@ -3,9 +3,12 @@ package com.example.faculty
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -78,9 +81,13 @@ import kotlinx.coroutines.withContext
 
         reference = FirebaseDatabase.getInstance().getReference().child("Faculty")
 
-        if (supportActionBar != null) {
-            supportActionBar!!.hide()
-        }
+//        if (supportActionBar != null) {
+//            supportActionBar!!.hide()
+//        }
+        supportActionBar?.title = "Update Faculty"
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#9E943E"))) // Replace with your desired color
+// Enable the Up button (back button)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.fab.setOnClickListener {
             val intent = Intent(this,AddTeacher::class.java)
@@ -147,7 +154,18 @@ import kotlinx.coroutines.withContext
 
        }
 
-    private fun csDepartmentData() {
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         when (item.itemId) {
+             android.R.id.home -> {
+                 // Handle the Up button click event (back button)
+                 onBackPressed()
+                 return true
+             }
+             else -> return super.onOptionsItemSelected(item)
+         }
+     }
+
+     private fun csDepartmentData() {
         dbref = reference.child("Computer Science")
         listCs = ArrayList()
        CoroutineScope(Dispatchers.IO).launch {
@@ -394,9 +412,6 @@ import kotlinx.coroutines.withContext
              }
              "Information Technology"->{
                  itDepartmentData()
-             }
-             else->{
-                 Toast.makeText(this, "getting null", Toast.LENGTH_SHORT).show()
              }
          }
      }

@@ -10,25 +10,12 @@
             android:background="#EAE1F6"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Upload Image"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-
-                android:background="#A060EF"
-                android:textSize="25sp"/>
 
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="140dp"
                 android:layout_height="120dp"
-
+                android:layout_marginTop="20dp"
                 android:elevation="16dp"
                 app:cardCornerRadius="8dp"
                 android:layout_gravity="center"
@@ -59,7 +46,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/indigo"
+                        android:background="@color/purple_200"
                         android:layout_marginTop="10dp"
                         />
                 </LinearLayout>
@@ -95,6 +82,9 @@ android:layout_marginTop="10dp"
                 android:text="Upload Image"
                 android:layout_marginTop="12dp"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                style="@style/ElevatedTextIconButton"
                 android:backgroundTint="@color/purple_200"
                 android:id="@+id/uploadImageButton"/>
             <com.google.android.material.card.MaterialCardView

@@ -8,6 +8,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.provider.Settings
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -47,6 +49,12 @@ class UploadImage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor=resources.getColor(R.color.statusBarColor_2)
+        supportActionBar?.title = "Upload Image"
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#A060EF"))) // Replace with your desired color
+
+        // Enable the Up button (back button)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_upload_image)
         progressDialog = ProgressDialog(this)
 
@@ -57,9 +65,9 @@ class UploadImage : AppCompatActivity() {
         val items : List<String> = listOf("Select Category","Convocation","Independence Day","Other Events")
         val adapter = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,items)
 
-        if (supportActionBar != null) {
-            supportActionBar!!.hide()
-        }
+//        if (supportActionBar != null) {
+//            supportActionBar!!.hide()
+//        }
 
         binding.imageCategory.adapter = adapter
         binding.imageCategory.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener
@@ -85,41 +93,12 @@ class UploadImage : AppCompatActivity() {
             {
                 Toast.makeText(this, "Please select Image Category", Toast.LENGTH_SHORT).show()
             }
-            else if (!isInternetAvailable()) {
-                showInternetDialog()
-            }
             else{
                 progressDialog.setMessage("Uploading")
                     progressDialog.show()
                 uploadImage()
             }
         }
-    }
-
-    private fun showInternetDialog() {
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("No Internet Connection")
-        dialogBuilder.setMessage("Please enable internet connectivity to use this app.")
-        dialogBuilder.setPositiveButton("Settings") { dialog: DialogInterface, _: Int ->
-            val settingsIntent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)
-            startActivity(settingsIntent)
-            dialog.dismiss()
-
-        }
-        dialogBuilder.setNegativeButton("Exit") { dialog: DialogInterface, _: Int ->
-            finish()
-        }
-        val alertDialog = dialogBuilder.create()
-        alertDialog.setCancelable(false)
-        alertDialog.show()
-
-    }
-
-    private fun isInternetAvailable():Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connectivityManager.activeNetworkInfo
-        return networkInfo != null && networkInfo.isConnected
-
     }
 
     private fun uploadImage() {
@@ -156,7 +135,10 @@ class UploadImage : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Image uploaded!", Toast.LENGTH_SHORT).show()
                 binding.fileName.text=""
+                databaseReference = FirebaseDatabase.getInstance().getReference().child("gallery")
                 binding.imageCategory.setSelection(0)
+                category="Select Category"
+                bitmap=null
                 binding.galleryImageView.setImageResource(android.R.color.transparent)
             }.addOnFailureListener {
                 progressDialog.dismiss()
@@ -170,6 +152,17 @@ class UploadImage : AppCompatActivity() {
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the Up button click event (back button)
+                onBackPressed()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode== UploadNotice.IMAGE_REQUEST_CODE && resultCode== RESULT_OK)

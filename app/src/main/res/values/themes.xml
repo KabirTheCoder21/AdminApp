@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.AdminApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#1C51ED</item>
-        <item name="colorPrimaryVariant">#102157</item>
+        <item name="colorPrimary">#4463A5</item>
+        <item name="colorPrimaryVariant">#11295C</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

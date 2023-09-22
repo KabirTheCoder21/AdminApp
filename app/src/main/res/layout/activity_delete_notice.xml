@@ -7,20 +7,8 @@
     android:orientation="vertical"
     android:background="#EEF6F5"
     tools:context="com.example.notice.DeleteNotice">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Delete Notice"
-        android:textColor="@color/white"
-        android:textStyle="bold"
 
-        android:background="@color/green1"
-        android:textSize="25sp"/>
-<androidx.recyclerview.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/deleteNoticeRV"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

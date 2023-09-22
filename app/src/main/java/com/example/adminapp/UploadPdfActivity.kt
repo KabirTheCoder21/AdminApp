@@ -10,6 +10,8 @@ import android.content.Intent
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,7 @@ import android.os.Bundle
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -47,6 +50,12 @@ class UploadPdfActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor = resources.getColor(R.color.statusBarColor_3)
+        supportActionBar?.title = "Upload Ebook"
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#7F2DE4"))) // Replace with your desired color
+
+        // Enable the Up button (back button)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_upload_pdf)
         databaseReference = FirebaseDatabase.getInstance().getReference()
         storageReference = FirebaseStorage.getInstance().getReference()
@@ -55,9 +64,10 @@ class UploadPdfActivity : AppCompatActivity() {
         binding.selectPdf.setOnClickListener {
             pickImageGallery()
         }
-        if (supportActionBar != null) {
-            supportActionBar!!.hide()
-        }
+
+//        if (supportActionBar != null) {
+//            supportActionBar!!.hide()
+//        }
         binding.pdfReview.setOnClickListener {
             val pdfUri = Uri.parse(pdfData.toString())
             binding.pdfView.visibility = View.VISIBLE
@@ -105,6 +115,17 @@ class UploadPdfActivity : AppCompatActivity() {
         alertDialog.show()
 
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the Up button click event (back button)
+                onBackPressed()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
 
     private fun isInternetAvailable():Boolean {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

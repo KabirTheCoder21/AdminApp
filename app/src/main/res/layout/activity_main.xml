@@ -7,34 +7,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
-    android:background="@drawable/new_back"
+    android:background="@drawable/back_new2"
     tools:context=".MainActivity">
 <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
     android:layout_marginBottom="40dp"
-    android:orientation="horizontal">
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/avtar_profile"/>
+    android:orientation="vertical">
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_centerInParent="true"
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderIndicatorAnimationDuration="600"
+        app:sliderIndicatorEnabled="true"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorMargin="15dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="2dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="#BCB8B8"
+        app:sliderScrollTimeInSec="1" />
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="xyz School"
+            android:text="University of Lucknow"
+
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
             android:textSize="30sp"
             ></TextView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="address"
+            android:text="Jankipuram,226021"
+            android:textColor="@color/black"
             android:textSize="20sp"/>
 
     </LinearLayout>
@@ -79,7 +98,7 @@
                <View
                    android:layout_width="match_parent"
                    android:layout_height="2dp"
-                   android:background="@color/indigo"
+                   android:background="#6C8ACA"
                    android:layout_marginTop="10dp"
                    />
            </LinearLayout>
@@ -117,7 +136,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/indigo"
+                    android:background="#6C8ACA"
                     android:layout_marginTop="10dp"
                     />
             </LinearLayout>
@@ -133,7 +152,7 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
+
             android:backgroundTint="@color/card_background"
             android:elevation="20dp"
             app:cardCornerRadius="8dp"
@@ -163,13 +182,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/indigo"/>
+                    android:background="#6C8ACA"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_marginTop="20dp"
+
             android:elevation="20dp"
             app:cardCornerRadius="8dp"
             android:layout_marginStart="20dp"
@@ -194,12 +213,12 @@
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:textSize="15sp"
-                    android:textColor="@color/textcolor"/>
+                    android:textColor="@color/black"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/indigo"
+                    android:background="#6C8ACA"
                     />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -211,17 +230,21 @@
         android:orientation="horizontal"
         android:layout_margin="5dp">
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_marginTop="20dp"
+
             android:elevation="20dp"
             app:cardCornerRadius="8dp"
+            android:layout_gravity="center"
+
             android:backgroundTint="@color/card_background"
             android:id="@+id/delete">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
+
                 android:gravity="center">
                 <ImageView
                     android:layout_width="64dp"
@@ -242,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/indigo"
+                    android:background="#6C8ACA"
                     />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

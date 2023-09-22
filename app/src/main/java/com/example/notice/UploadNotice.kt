@@ -9,12 +9,16 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.provider.Settings
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -48,16 +52,18 @@ class UploadNotice : AppCompatActivity() {
         setContentView(R.layout.activity_upload_notice)
 
         window.statusBarColor= resources.getColor(R.color.statusBarColor_1)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_upload_notice)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#D61F5C"))) // Replace with your desired color
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_upload_notice)
         databaseReference = FirebaseDatabase.getInstance().getReference()
         storageReference = FirebaseStorage.getInstance().getReference()
-
         progressDialog = ProgressDialog(this)
+        supportActionBar?.title = "Upload Notice"
 
-        if (supportActionBar != null) {
-            supportActionBar!!.hide()
-        }
+//        if (supportActionBar != null) {
+//            supportActionBar!!.hide()
+//        }
 
         binding.selectImage.setOnClickListener {
             //pickImageGallery()
@@ -77,9 +83,6 @@ class UploadNotice : AppCompatActivity() {
                 binding.noticeTitle.setError("Empty")
                 binding.noticeTitle.requestFocus()
             }
-            else if (!isInternetAvailable()) {
-                showInternetDialog()
-            }
             else
             {
                 uploadImage()
@@ -87,30 +90,6 @@ class UploadNotice : AppCompatActivity() {
         }
     }
 
-    private fun showInternetDialog() {
-//        TODO("Not yet implemented")
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("No Internet Connection")
-        dialogBuilder.setMessage("Please enable internet connectivity to use this app.")
-        dialogBuilder.setPositiveButton("Settings") { dialog: DialogInterface, _: Int ->
-            val settingsIntent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)
-            startActivity(settingsIntent)
-            dialog.dismiss()
-
-        }
-        dialogBuilder.setNegativeButton("Exit") { dialog: DialogInterface, _: Int ->
-            finish()
-        }
-        val alertDialog = dialogBuilder.create()
-        alertDialog.setCancelable(false)
-        alertDialog.show()
-    }
-
-    private fun isInternetAvailable(): Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connectivityManager.activeNetworkInfo
-        return networkInfo != null && networkInfo.isConnected
-    }
 
     private fun uploadImage() {
         progressDialog.setMessage("Uploading...")
@@ -160,8 +139,9 @@ class UploadNotice : AppCompatActivity() {
             dbRef.child(uniqueKey).setValue(noticeData).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Notice uploaded!", Toast.LENGTH_SHORT).show()
-                binding.fileName.text=""
+                binding.fileName.text = ""
                 binding.noticeTitle.text?.clear()
+                bitmap=null
                 binding.noticeImageView.visibility = View.GONE
             }.addOnFailureListener {
                 progressDialog.dismiss()
@@ -194,6 +174,7 @@ class UploadNotice : AppCompatActivity() {
             return null
         }
     }
+
 
     private fun getImageName(imageUri: Uri?): String {
         val contentResolver = applicationContext.contentResolver
@@ -232,6 +213,18 @@ class UploadNotice : AppCompatActivity() {
         }
         return displayName
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the Up button click event (back button)
+                onBackPressed()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode== IMAGE_REQUEST_CODE&&resultCode== RESULT_OK)
@@ -243,8 +236,9 @@ class UploadNotice : AppCompatActivity() {
             //binding.noticeImageView.setImageURI(data?.data)
             if (bitmap != null) {
                 // Do something with the bitmap, e.g., set it to an ImageView
+                binding.noticeImageView.visibility = View.VISIBLE
                 binding.noticeImageView.setImageBitmap(bitmap)
-                binding.noticeImageView.scaleType = ImageView.ScaleType.FIT_CENTER
+                binding.noticeImageView.scaleType = ImageView.ScaleType.FIT_XY
                val fname = getImageName(imageUri)
                 binding.fileName.text = fname
             } else {
