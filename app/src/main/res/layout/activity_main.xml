@@ -6,20 +6,52 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainActivity">
 
+    android:background="@drawable/new_back"
+    tools:context=".MainActivity">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:layout_marginBottom="40dp"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/avtar_profile"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xyz School"
+            android:textSize="30sp"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_margin="5dp">
+        >
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="16dp"
+            android:layout_height="120dp"
+            android:elevation="30dp"
+            android:layout_marginEnd="20dp"
             app:cardCornerRadius="8dp"
             android:backgroundTint="@color/card_background"
             android:id="@+id/addNotice">
@@ -29,32 +61,35 @@
                android:orientation="vertical"
                android:gravity="center">
                <ImageView
+                   android:layout_marginTop="10dp"
                    android:layout_width="64dp"
                    android:layout_height="64dp"
                    android:background="@drawable/circle_red"
                    android:src="@drawable/notice_icon"
                    android:padding="15dp"/>
-               <View
-                   android:layout_width="match_parent"
-                   android:layout_height="2dp"
-                   android:background="@color/lightGrey"
-                   android:layout_margin="8dp"/>
+
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Upload Notice"
                    android:textStyle="bold"
-                   android:padding="6dp"
-                   android:layout_marginTop="12dp"
+                   android:textSize="15sp"
+                   android:layout_marginTop="10dp"
                    android:textColor="@color/textcolor"/>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="2dp"
+                   android:background="@color/indigo"
+                   android:layout_marginTop="10dp"
+                   />
            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="16dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:elevation="20dp"
             app:cardCornerRadius="8dp"
             android:backgroundTint="@color/card_background"
             android:id="@+id/addGalleryImage">
@@ -64,24 +99,27 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <ImageView
+                    android:layout_marginTop="10dp"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circle_purple"
                     android:src="@drawable/gallery_icon"
                     android:padding="15dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/lightGrey"
-                    android:layout_margin="8dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Upload Image"
                     android:textStyle="bold"
-                    android:padding="6dp"
+                    android:textSize="15sp"
                     android:layout_marginTop="12dp"
                     android:textColor="@color/textcolor"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/indigo"
+                    android:layout_marginTop="10dp"
+                    />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
@@ -93,10 +131,11 @@
         android:layout_margin="5dp">
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
+            android:layout_height="140dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/card_background"
-            android:elevation="16dp"
+            android:elevation="20dp"
             app:cardCornerRadius="8dp"
             android:id="@+id/addEbook">
             <LinearLayout
@@ -110,27 +149,30 @@
                     android:background="@drawable/circle_pink"
                     android:src="@drawable/upload_icon"
                     android:padding="15dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/lightGrey"
-                    android:layout_margin="8dp"/>
+
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Upload Ebook"
                     android:textStyle="bold"
-                    android:padding="6dp"
-                    android:layout_marginTop="12dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/textcolor"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/indigo"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="16dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:elevation="20dp"
             app:cardCornerRadius="8dp"
+            android:layout_marginStart="20dp"
             android:backgroundTint="@color/card_background"
             android:id="@+id/addFaculty">
             <LinearLayout
@@ -144,19 +186,21 @@
                     android:background="@drawable/circle_yellow"
                     android:src="@drawable/group_icon"
                     android:padding="15dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/lightGrey"
-                    android:layout_margin="8dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Update Faculty"
                     android:textStyle="bold"
-                    android:padding="6dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/textcolor"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/indigo"
+                    />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
@@ -167,10 +211,10 @@
         android:orientation="horizontal"
         android:layout_margin="5dp">
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:elevation="20dp"
             app:cardCornerRadius="8dp"
             android:backgroundTint="@color/card_background"
             android:id="@+id/delete">
@@ -185,19 +229,21 @@
                     android:background="@drawable/circle_green"
                     android:src="@drawable/delete_icon"
                     android:padding="15dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/lightGrey"
-                    android:layout_margin="8dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Delete Notice"
                     android:textStyle="bold"
-                    android:padding="6dp"
-                    android:layout_marginTop="12dp"
+                   android:textSize="15sp"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/textcolor"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/indigo"
+                    />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

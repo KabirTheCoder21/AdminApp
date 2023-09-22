@@ -6,15 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F1EFE1"
+
     tools:context="com.example.faculty.UpdateTeacher">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Upload Information"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="#9E943E"
+        android:textSize="25sp"
+        />
 <de.hdodenhof.circleimageview.CircleImageView
     android:layout_width="160dp"
     android:layout_height="160dp"
     android:layout_gravity="center_horizontal"
     android:id="@+id/avtarProfile"
     android:layout_marginTop="36dp"
+
     android:src="@drawable/avtar_profile"
     />
+    <TextView
+        android:id="@+id/fileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="No File Selected"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +48,7 @@
             android:id="@+id/updateTeacherName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:inputType="text"
             android:hint="Name" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -38,6 +62,7 @@
             android:id="@+id/updateTeacherEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:inputType="textEmailAddress"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -51,6 +76,7 @@
             android:id="@+id/updateTeacherPost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:inputType="text"
             android:hint="Post" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -63,21 +89,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Update"
+            android:textColor="@color/black"
             android:layout_margin="12dp"
             android:textAllCaps="false"
-            android:background="@drawable/ripple_effect"
-            app:backgroundTintMode="screen"
-            app:rippleColor="@color/red2"
+            android:backgroundTint="#9F9434"
             android:id="@+id/updateBtn"
             android:layout_weight="1"/>
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Delete"
-            android:background="@drawable/ripple_effect"
-            app:backgroundTintMode="screen"
+            android:textColor="@color/black"
+            android:backgroundTint="#9F9434"
             android:id="@+id/deleteBtn"
-            app:rippleColor="@color/red2"
             android:layout_margin="12dp"
             android:textAllCaps="false"
             android:layout_weight="1"/>

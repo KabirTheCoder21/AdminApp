@@ -29,6 +29,7 @@ class DeleteNotice : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.hasFixedSize()
         getNotice()
+        window.statusBarColor = resources.getColor(R.color.statusBarColor)
     }
 
     private fun getNotice() {

@@ -27,14 +27,14 @@
                     android:id="@+id/teacherNameTV"
                     android:layout_margin="2dp"
                     android:text="Kabir Seth"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/teacherPostTV"
                     android:layout_margin="2dp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/black"
                     android:text="Assistant Professor"
                     android:textSize="16sp" />
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="2dp"
                     android:id="@+id/teacherEmailTV"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/black"
                     android:text="Kabirseth@gmail.com"
                     android:textSize="16sp" />
                 <com.google.android.material.button.MaterialButton
@@ -51,7 +51,7 @@
                     android:id="@+id/updateInfoBtn"
                     android:text="Update Info."
                     android:layout_marginVertical="4dp"
-                    android:textColor="@color/red2"
+                    android:textColor="@color/black"
                     android:layout_gravity="end"
                     android:layout_margin="4dp"
                     android:textAllCaps="false"

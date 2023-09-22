@@ -6,7 +6,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#EAE1F6"
             android:orientation="vertical"
             >
             <TextView
@@ -20,52 +21,57 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
 
-                android:background="@color/purple_200"
+                android:background="#A060EF"
                 android:textSize="25sp"/>
+
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="140dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp"
+                android:layout_height="120dp"
+
                 android:elevation="16dp"
                 app:cardCornerRadius="8dp"
                 android:layout_gravity="center"
-                android:id="@+id/selectGalleryImage"
-                android:backgroundTint="@color/card_background">
+                android:backgroundTint="@color/card_background"
+                android:id="@+id/selectGalleryImage">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:layout_gravity="center"
                     android:gravity="center">
                     <ImageView
+                        android:layout_marginTop="10dp"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/circle_purple"
-                        android:src="@drawable/image_icon"
+                        android:src="@drawable/gallery_icon"
                         android:padding="15dp"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/lightGrey"
-                        android:layout_margin="8dp"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Select Image"
+                        android:text="Upload Image"
                         android:textStyle="bold"
-                        android:padding="6dp"
+                        android:textSize="15sp"
                         android:layout_marginTop="12dp"
                         android:textColor="@color/textcolor"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/indigo"
+                        android:layout_marginTop="10dp"
+                        />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 <TextView
     android:id="@+id/fileName"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="File name"
-    android:padding="12dp"
-    android:textSize="18sp"
+    android:text="No Selected File"
 
+    android:textSize="18sp"
+android:layout_marginTop="10dp"
     android:layout_gravity="center"
     android:textAlignment="center"
     />
@@ -92,10 +98,11 @@
                 android:backgroundTint="@color/purple_200"
                 android:id="@+id/uploadImageButton"/>
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 app:cardElevation="12dp"
+                android:backgroundTint="#EAE1F6"
                 android:layout_gravity="center"
                 app:cardCornerRadius="16dp"
                 android:layout_margin="4dp"
@@ -105,6 +112,7 @@
                     android:id="@+id/galleryImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"/>
             </com.google.android.material.card.MaterialCardView>

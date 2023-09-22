@@ -1,17 +1,21 @@
 package com.example.faculty
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContentResolver
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.ConnectivityManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -57,6 +61,12 @@ private val handler = Handler()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+        window.statusBarColor = resources.getColor(R.color.statusBarColor_4)
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_add_teacher)
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Faculty")
         storageReference = FirebaseStorage.getInstance().getReference()
@@ -131,7 +141,7 @@ private val handler = Handler()
     }
 
     private fun checkValidation() {
-        if(bitmap==null)
+        if(bitmap==null || binding.addTeacherImage.equals(R.drawable.avtar_profile))
         {
             Toast.makeText(this, "Select profile Image", Toast.LENGTH_SHORT).show()
         }
@@ -154,6 +164,7 @@ private val handler = Handler()
         }
         else uploadData()
     }
+
 
     private fun uploadData() {
         progressDialog.setMessage("Uploading...")
@@ -198,6 +209,7 @@ private val handler = Handler()
                 binding.addTeacherName.setText("")
                 binding.addTeacherEmail.setText("")
                 binding.addTeacherPost.setText("")
+                bitmap=null
                 val itemText = "Select Category"
                 val position = (binding.addTeacherCategory.adapter as ArrayAdapter<String>).getPosition(itemText)
                 binding.addTeacherCategory.setSelection(position)

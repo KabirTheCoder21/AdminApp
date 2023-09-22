@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="4dp"
+            android:background="#F1E9FA"
             tools:context="com.example.notice.UploadNotice">
 
             <TextView
@@ -16,21 +16,23 @@
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Upload PDF"
+                android:text="Upload Ebook"
                 android:textColor="@color/white"
                 android:textStyle="bold"
 
-                android:background="@color/purple_200"
+                android:background="#7F2DE4"
                 android:textSize="25sp"/>
+
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="140dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/card_background"
                 android:elevation="16dp"
                 app:cardCornerRadius="8dp"
-                android:layout_gravity="center"
-                android:id="@+id/selectPdf"
-                android:backgroundTint="@color/card_background">
+                android:id="@+id/selectPdf">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -39,28 +41,31 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/circle_purple"
-                        android:src="@drawable/pdf_icon"
+                        android:background="@drawable/circle_pink"
+                        android:src="@drawable/upload_icon"
                         android:padding="15dp"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/lightGrey"
-                        android:layout_margin="8dp"/>
+
+                    />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Select PDF"
+                        android:text="Upload Ebook"
                         android:textStyle="bold"
-                        android:padding="6dp"
-                        android:layout_marginTop="12dp"
+                        android:textSize="15sp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/textcolor"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/indigo"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
+              android:layout_marginTop="10dp"
               android:gravity="center">
               <com.google.android.material.textview.MaterialTextView
                   android:layout_width="0dp"
@@ -96,17 +101,17 @@
                     android:layout_height="wrap_content"
                     android:hint="PDF Title" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/uploadPdfButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload PDF"
-                android:layout_marginTop="9dp"
-                android:textAllCaps="false"
+                android:layout_height="49dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ripple_effect"
-                app:backgroundTintMode="screen"
-                android:backgroundTint="@color/purple_200"
-                android:id="@+id/uploadPdfButton"/>
+                android:layout_marginTop="9dp"
+                android:background="@color/pink"
+                android:text="Upload PDF"
+                android:textAllCaps="false"
+                app:backgroundTintMode="screen" />
 
                 <com.github.barteksc.pdfviewer.PDFView
                     android:id="@+id/pdfView"

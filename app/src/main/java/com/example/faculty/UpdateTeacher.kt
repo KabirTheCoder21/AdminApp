@@ -10,7 +10,9 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.drawToBitmap
 import androidx.databinding.DataBindingUtil
 import com.example.adminapp.R
 import com.example.adminapp.databinding.ActivityUpdateTeacherBinding
@@ -42,6 +44,10 @@ class UpdateTeacher : AppCompatActivity() {
     private lateinit var timestamp : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+        window.statusBarColor = resources.getColor(R.color.statusBarColor_4)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_update_teacher)
 
         dbreference = FirebaseDatabase.getInstance().reference.child("Faculty")
@@ -81,45 +87,69 @@ binding.avtarProfile.setOnClickListener {
             .start()
 }
         binding.updateBtn.setOnClickListener {
-            progressDialog.setMessage("Uploading...")
-            progressDialog.show()
-            checkValidation()
+            if(bitmap==null &&(binding.updateTeacherName.text.toString().equals("") || binding.updateTeacherEmail.text.toString().equals("")
+                        || binding.updateTeacherPost.text.toString().equals("") || category=="Select Category"))
+            {
+                Toast.makeText(this, "Enter Required field", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                checkValidation()
+            }
         }
         binding.deleteBtn.setOnClickListener {
-            deleteData();
+             if(bitmap==null &&(binding.updateTeacherName.text.toString().equals("") || binding.updateTeacherEmail.text.toString().equals("")
+                    || binding.updateTeacherPost.text.toString().equals("") || category=="Select Category"))
+        {
+            Toast.makeText(this, "Enter Required field", Toast.LENGTH_SHORT).show()
+        }
+            else deleteData()
         }
     }
 
     private fun deleteData() {
         dbreference.child(category).child(uniquekey).removeValue()
             .addOnSuccessListener {
+                deletedOldPic()
                 Toast.makeText(this, "Deleted successfully", Toast.LENGTH_SHORT).show()
 
+                val intent = Intent(this,UpdateFaculty::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
 
             }.addOnFailureListener {
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
-        deletedOldPic()
     }
 
     private fun checkValidation() {
-       if(binding.updateTeacherName.text.toString().isEmpty())
+       if(binding.updateTeacherName.text.toString().isEmpty() || binding.updateTeacherName.text.toString().equals(""))
         {
             Toast.makeText(this, "Enter Name", Toast.LENGTH_SHORT).show()
             binding.updateTeacherName.setError("Empty!")
             binding.updateTeacherName.requestFocus()
+          //  Toast.makeText(this, "${image}", Toast.LENGTH_SHORT).show()
         }
-        else if (binding.updateTeacherEmail.text.toString().isEmpty())
+        else if (binding.updateTeacherEmail.text.toString().isEmpty() || binding.updateTeacherEmail.text.toString().equals(""))
         {
             Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show()
             binding.updateTeacherEmail.setError("Empty!")
             binding.updateTeacherEmail.requestFocus()
         }
+        else if(binding.updateTeacherPost.text.toString().isEmpty() || binding.updateTeacherPost.text.toString().equals(""))
+       {
+           Toast.makeText(this, "Enter Post", Toast.LENGTH_SHORT).show()
+           binding.updateTeacherPost.setError("Empty!")
+           binding.updateTeacherPost.requestFocus()
+       }
         else if(bitmap==null)
        {
-            uploadDataToDatabase(image)
-       }else {
+           progressDialog.setMessage("Uploading...")
+           progressDialog.show()
+           uploadDataToDatabase(image)
+       }
+       else {
            uploadData()
+
        }
     }
 
@@ -142,7 +172,7 @@ binding.avtarProfile.setOnClickListener {
             val compressImage = outputStream.toByteArray()
 
             // Generate a unique filename, for example, using a timestamp
-            val filePath: StorageReference = storageReference.child("Faculty").child(filename)
+            val filePath: StorageReference = storageReference.child("Faculty").child(fname)
             val uploadTask: UploadTask = filePath.putBytes(compressImage)
             uploadTask.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -166,11 +196,14 @@ binding.avtarProfile.setOnClickListener {
         hashMap.put("email",binding.updateTeacherEmail.text.toString())
         hashMap.put("post",binding.updateTeacherPost.text.toString())
         hashMap.put("image",downloadUrl)
-        hashMap.put("fname",filename)
+        hashMap.put("fname",fname)
         if (uniquekey != null && category!=null) {
             dbreference.child(category).child(uniquekey).updateChildren(hashMap).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "updated SucessFully", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this,UpdateFaculty::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
             }.addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()

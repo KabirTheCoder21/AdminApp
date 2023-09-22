@@ -2,6 +2,7 @@ package com.example.faculty
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class TeacherAdapter(
             Toast.makeText(context, "issue", Toast.LENGTH_SHORT).show()
         }
         holder.updateBtn.setOnClickListener {
+            Log.d("image", "onBindViewHolder: $items.image ")
             val intent = Intent(context,UpdateTeacher::class.java)
             intent.putExtra("name",holder.fName.text.toString())
             intent.putExtra("email",holder.fEmail.text.toString())

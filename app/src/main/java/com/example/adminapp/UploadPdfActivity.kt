@@ -1,16 +1,21 @@
 package com.example.adminapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContentResolver
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.ConnectivityManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -41,6 +46,7 @@ class UploadPdfActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.statusBarColor = resources.getColor(R.color.statusBarColor_3)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_upload_pdf)
         databaseReference = FirebaseDatabase.getInstance().getReference()
         storageReference = FirebaseStorage.getInstance().getReference()
@@ -72,8 +78,38 @@ class UploadPdfActivity : AppCompatActivity() {
             }else if(pdfData==null)
             {
                 Toast.makeText(this, "Please Upload Pdf", Toast.LENGTH_SHORT).show()
-            }else uploadPdf()
+            }
+            else if (!isInternetAvailable()) {
+                showInternetDialog()
+            }
+            else uploadPdf()
         }
+
+    }
+
+    private fun showInternetDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("No Internet Connection")
+        dialogBuilder.setMessage("Please enable internet connectivity to use this app.")
+        dialogBuilder.setPositiveButton("Settings") { dialog: DialogInterface, _: Int ->
+            val settingsIntent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)
+            startActivity(settingsIntent)
+            dialog.dismiss()
+
+        }
+        dialogBuilder.setNegativeButton("Exit") { dialog: DialogInterface, _: Int ->
+            finish()
+        }
+        val alertDialog = dialogBuilder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+
+    }
+
+    private fun isInternetAvailable():Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
 
     }
 

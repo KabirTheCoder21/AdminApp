@@ -4,12 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FDFCF1"
     tools:context="com.example.faculty.AddTeacher">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Upload Faculty"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="#9E943E"
+            android:textSize="25sp"
+            />
+
 <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/addTeacherImage"
     android:layout_width="130dp"
@@ -17,7 +31,7 @@
     android:src="@drawable/avtar_profile"
     android:contentDescription="A profile image"
     android:layout_gravity="center"
-    android:layout_margin="32dp"/>
+    android:layout_margin="22dp"/>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -68,13 +82,13 @@
             android:layout_marginVertical="16dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Add Teacher"
             android:layout_marginTop="12dp"
             android:textAllCaps="false"
-            android:backgroundTint="@color/red2"
-            android:src="@drawable/ripple_effect"
+            android:backgroundTint="#9E943E"
             android:id="@+id/addTeacherBtn"/>
     </LinearLayout>
 </ScrollView>

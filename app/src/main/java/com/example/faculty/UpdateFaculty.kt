@@ -60,6 +60,8 @@ import kotlinx.coroutines.withContext
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.statusBarColor = resources.getColor(R.color.statusBarColor_4)
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_update_faculty)
 
         csDepartment = findViewById(R.id.csDepartment)
@@ -148,8 +150,7 @@ import kotlinx.coroutines.withContext
     private fun csDepartmentData() {
         dbref = reference.child("Computer Science")
         listCs = ArrayList()
-
-        CoroutineScope(Dispatchers.IO).launch {
+       CoroutineScope(Dispatchers.IO).launch {
             try {
                 val snapshot = dbref.get().await() // Fetch data in the background thread
                 withContext(Dispatchers.Main) {
@@ -182,6 +183,36 @@ import kotlinx.coroutines.withContext
                 }
             }
         }
+       /* dbref.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                listCs = ArrayList()
+                if (!snapshot.exists()) {
+                    csNoData.visibility = View.VISIBLE
+                    csDepartment.visibility = View.GONE
+                } else {
+                    csNoData.visibility = View.GONE
+                    csDepartment.visibility = View.VISIBLE
+                    for (it in snapshot.children) {
+                        val facultyData: FacultyData? = it.getValue(FacultyData::class.java)
+                        if (facultyData != null) {
+                            listCs.add(facultyData)
+                        }
+                    }
+
+                    csDepartment.hasFixedSize()
+                    csDepartment.layoutManager = LinearLayoutManager(this@UpdateFaculty, LinearLayoutManager.HORIZONTAL, false)
+                    adapter = TeacherAdapter(listCs, this@UpdateFaculty,"Computer Science")
+                    csDepartment.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                    // csDepartment.startAnimation(animation)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })*/
     }
     private fun itDepartmentData() {
         dbref = reference.child("Information Technology")
