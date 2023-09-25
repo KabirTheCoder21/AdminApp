@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gso: GoogleSignInOptions
     private lateinit var gsc: GoogleSignInClient
     private lateinit var progressDialog: ProgressDialog
-    private val INTERNET_PERMISSION_REQUEST_CODE = 101
 
     var url1 =
         "https://images.indianexpress.com/2022/07/lucknow-university-1200.jpg?w=640"
@@ -40,11 +39,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-//        if (supportActionBar != null) {
-//            supportActionBar!!.hide()
-//        }
-        /*   val toolbar= binding.toolbar
-        setSupportActionBar(toolbar)*/
 
         // Find the power button ImageView
         progressDialog= ProgressDialog(this)
@@ -149,4 +143,3 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-//deepak
