@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/back_login"
+            android:orientation="vertical"
+            android:padding="20dp"
+            tools:context=".SignInActivity">
+
+            <app.rive.runtime.kotlin.RiveAnimationView
+                android:id="@+id/loginCharacterS"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="4dp"
+                app:riveResource="@raw/newanimated" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailSignin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:id="@+id/passwordSign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:id="@+id/passwordSignconfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical"
+                android:layout_centerInParent="true"/>
+
+            <Button
+                android:id="@+id/btnSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_border"
+                android:text="Sign In"
+                android:textAllCaps="false"
+
+                android:textColor="@color/black"
+                android:textSize="20dp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="or Signin With"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/btnX"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="12dp"
+                    android:src="@drawable/twitterx_logo" />
+
+                <ImageView
+                    android:id="@+id/btnGoogle"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:src="@drawable/google_logo" />
+
+                <ImageView
+                    android:id="@+id/btnLinked"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="10dp"
+                    android:src="@drawable/linked_logo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already Have an account?"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/btnloginAct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" LoginIn"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+</layout>

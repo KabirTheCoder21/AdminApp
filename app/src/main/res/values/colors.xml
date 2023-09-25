@@ -21,8 +21,9 @@
     <color name="card_background">#FFFFFF</color>
 
     <color name="statusBarColor">#03876C</color>
-    <color name="statusBarColor_1">#A6073C</color>
-    <color name="statusBarColor_2">#8732F8</color>
+    <color name="statusBarColor_1">#313A68</color>
+    <color name="statusBarColor_12">#424F93</color>
+    <color name="statusBarColor_2">#9E3559</color>
     <color name="statusBarColor_3">#8732F8</color>
     <color name="statusBarColor_4">#383413</color>
 </resources>

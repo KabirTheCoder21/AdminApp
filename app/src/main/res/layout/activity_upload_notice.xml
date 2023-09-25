@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FAF1F4"
+        android:background="#F1EFF0"
         android:orientation="vertical"
         >
 
@@ -20,7 +20,6 @@
             app:cardCornerRadius="8dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/card_background"
             android:id="@+id/selectImage">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,11 +28,11 @@
                 android:gravity="center">
                 <ImageView
                     android:layout_marginTop="10dp"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_red"
-                    android:src="@drawable/notice_icon"
-                    android:padding="15dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+
+                    android:src="@drawable/uploadd_notice"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -41,14 +40,8 @@
                     android:text="Upload Notice"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:layout_marginTop="10dp"
                     android:textColor="@color/textcolor"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/red2"
-                    android:layout_marginTop="10dp"
-                    />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <TextView
@@ -80,17 +73,16 @@
     android:text="Upload Notice"
     android:textSize="22sp"
     android:textColor="@color/white"
-    android:backgroundTint="@color/red2"
+    android:backgroundTint="#424F93"
     style="@style/ElevatedTextIconButton"
     android:layout_marginTop="12dp"
     android:textAllCaps="false"
-
     android:id="@+id/uploadNoticeButton"/>
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:backgroundTint="#FAF1F4"
+            android:backgroundTint="#F1EFF0"
             app:cardElevation="12dp"
             android:layout_gravity="center"
             app:cardCornerRadius="16dp"

@@ -24,6 +24,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.adminapp.R
+import com.example.adminapp.databinding.ActivitySignInBinding
 import com.example.adminapp.databinding.ActivityUploadNoticeBinding
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.database.DatabaseReference
@@ -49,13 +50,14 @@ class UploadNotice : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_upload_notice)
+        binding= ActivityUploadNoticeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         window.statusBarColor= resources.getColor(R.color.statusBarColor_1)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#D61F5C"))) // Replace with your desired color
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#424F93"))) // Replace with your desired color
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_upload_notice)
+
         databaseReference = FirebaseDatabase.getInstance().getReference()
         storageReference = FirebaseStorage.getInstance().getReference()
         progressDialog = ProgressDialog(this)

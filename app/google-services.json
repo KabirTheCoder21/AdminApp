@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "992337267708",
+    "firebase_url": "https://my-college-app-1b5cd-default-rtdb.firebaseio.com",
     "project_id": "my-college-app-1b5cd",
     "storage_bucket": "my-college-app-1b5cd.appspot.com"
   },
@@ -12,7 +13,28 @@
           "package_name": "com.example.adminapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "992337267708-9q442nq83sp4crgbbclakhrauj61ss4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adminapp",
+            "certificate_hash": "d7738ef671fe5234592b814031d8aa2115e50263"
+          }
+        },
+        {
+          "client_id": "992337267708-o4rdq612qe9jiv9u9671vuqgnf8aa9v7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adminapp",
+            "certificate_hash": "51734332e4ff25ab9b90dee51539c46a2abacd6b"
+          }
+        },
+        {
+          "client_id": "992337267708-gtqpoj2pm4ijpukvcknrmg749lhu6fuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB9xvEGVz_dmYz1m-2oTbLqUcfrAOJfLYI"
@@ -20,7 +42,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992337267708-gtqpoj2pm4ijpukvcknrmg749lhu6fuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

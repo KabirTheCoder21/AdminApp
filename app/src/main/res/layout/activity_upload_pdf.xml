@@ -89,17 +89,18 @@
                     android:hint="PDF Title" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/uploadPdfButton"
+            <Button
                 android:layout_width="wrap_content"
-                android:layout_height="49dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="4dp"
-                android:background="@color/pink"
                 android:text="Upload PDF"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:backgroundTint="#C34AD8"
+                style="@style/ElevatedTextIconButton"
+                android:layout_marginTop="12dp"
                 android:textAllCaps="false"
-                app:backgroundTintMode="screen" />
+                android:id="@+id/uploadPdfButton"/>
 
                 <com.github.barteksc.pdfviewer.PDFView
                     android:id="@+id/pdfView"

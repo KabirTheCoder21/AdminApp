@@ -7,7 +7,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EAE1F6"
+            android:background="#FDE1EB"
             android:orientation="vertical"
             >
 
@@ -28,27 +28,19 @@
                     android:layout_gravity="center"
                     android:gravity="center">
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_purple"
-                        android:src="@drawable/gallery_icon"
-                        android:padding="15dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:src="@drawable/events"
+                        android:padding="10dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Upload Image"
+                        android:text="Upload Events"
                         android:textStyle="bold"
                         android:textSize="15sp"
-                        android:layout_marginTop="12dp"
                         android:textColor="@color/textcolor"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/purple_200"
-                        android:layout_marginTop="10dp"
-                        />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 <TextView
@@ -85,14 +77,14 @@ android:layout_marginTop="10dp"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 style="@style/ElevatedTextIconButton"
-                android:backgroundTint="@color/purple_200"
+                android:backgroundTint="@color/red2"
                 android:id="@+id/uploadImageButton"/>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:cardElevation="12dp"
-                android:backgroundTint="#EAE1F6"
+                android:backgroundTint="#FDE1EB"
                 android:layout_gravity="center"
                 app:cardCornerRadius="16dp"
                 android:layout_margin="4dp"
@@ -100,9 +92,8 @@ android:layout_marginTop="10dp"
 
                 <com.ortiz.touchview.TouchImageView
                     android:id="@+id/galleryImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"/>
             </com.google.android.material.card.MaterialCardView>

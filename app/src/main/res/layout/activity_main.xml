@@ -9,10 +9,11 @@
 
     android:background="@drawable/back_new2"
     tools:context=".MainActivity">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="40dp"
+    android:layout_marginBottom="20dp"
     android:orientation="vertical">
 
     <com.smarteist.autoimageslider.SliderView
@@ -35,20 +36,35 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_margin="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
             android:text="University of Lucknow"
-
             android:textColor="@color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
-            android:textSize="30sp"
-            ></TextView>
+            android:textSize="30sp"/>
+
+            <ImageView
+                android:id="@+id/power"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="4dp"
+                android:layout_weight=".4"
+                android:src="@drawable/ic_powerr" />
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,8 +84,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
-            android:layout_height="120dp"
-            android:elevation="30dp"
+            android:layout_height="140dp"
+            app:cardElevation="8dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="8dp"
             android:backgroundTint="@color/card_background"
@@ -77,15 +93,17 @@
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="match_parent"
+
                android:orientation="vertical"
+               android:layout_margin="5dp"
                android:gravity="center">
                <ImageView
-                   android:layout_marginTop="10dp"
-                   android:layout_width="64dp"
-                   android:layout_height="64dp"
-                   android:background="@drawable/circle_red"
-                   android:src="@drawable/notice_icon"
-                   android:padding="15dp"/>
+
+                   android:layout_width="match_parent"
+                   android:layout_height="80dp"
+
+                   android:src="@drawable/uploadd_notice"
+                   android:padding="5dp"/>
 
                <TextView
                    android:layout_width="wrap_content"
@@ -93,22 +111,17 @@
                    android:text="Upload Notice"
                    android:textStyle="bold"
                    android:textSize="15sp"
-                   android:layout_marginTop="10dp"
+
                    android:textColor="@color/textcolor"/>
-               <View
-                   android:layout_width="match_parent"
-                   android:layout_height="2dp"
-                   android:background="#6C8ACA"
-                   android:layout_marginTop="10dp"
-                   />
+
            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
-            android:layout_height="120dp"
+            android:layout_height="140dp"
             android:layout_marginStart="20dp"
-            android:elevation="20dp"
+            app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
             android:backgroundTint="@color/card_background"
             android:id="@+id/addGalleryImage">
@@ -116,29 +129,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_margin="5dp"
                 android:gravity="center">
                 <ImageView
                     android:layout_marginTop="10dp"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_purple"
-                    android:src="@drawable/gallery_icon"
-                    android:padding="15dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+
+                    android:src="@drawable/events"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Upload Image"
+                    android:text="Upload Events"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:layout_marginTop="12dp"
+
                     android:textColor="@color/textcolor"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#6C8ACA"
-                    android:layout_marginTop="10dp"
-                    />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
@@ -152,22 +161,22 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginEnd="20dp"
-
+            app:cardElevation="8dp"
             android:backgroundTint="@color/card_background"
-            android:elevation="20dp"
             app:cardCornerRadius="8dp"
             android:id="@+id/addEbook">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_margin="5dp"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_pink"
-                    android:src="@drawable/upload_icon"
-                    android:padding="15dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+
+                    android:src="@drawable/ebook1"
+                    android:padding="5dp"/>
 
                     />
                 <TextView
@@ -176,20 +185,15 @@
                     android:text="Upload Ebook"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:layout_marginTop="10dp"
+
                     android:textColor="@color/textcolor"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#6C8ACA"/>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:layout_width="140dp"
             android:layout_height="140dp"
-
-            android:elevation="20dp"
+            app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
             android:layout_marginStart="20dp"
             android:backgroundTint="@color/card_background"
@@ -198,28 +202,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_margin="5dp"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_yellow"
-                    android:src="@drawable/group_icon"
-                    android:padding="15dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+
+                    android:src="@drawable/update_faculty"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Update Faculty"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
+
                     android:textSize="15sp"
                     android:textColor="@color/black"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#6C8ACA"
-                    />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
@@ -233,7 +233,7 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
 
-            android:elevation="20dp"
+            app:cardElevation="8dp"
             app:cardCornerRadius="8dp"
             android:layout_gravity="center"
 
@@ -244,29 +244,23 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_gravity="center"
-
+                android:layout_margin="5dp"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_green"
-                    android:src="@drawable/delete_icon"
-                    android:padding="15dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+
+                    android:src="@drawable/delete_notice"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Delete Notice"
                     android:textStyle="bold"
-                   android:textSize="15sp"
-                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
                     android:textColor="@color/textcolor"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#6C8ACA"
-                    />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

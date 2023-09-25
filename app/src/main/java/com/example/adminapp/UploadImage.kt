@@ -50,7 +50,7 @@ class UploadImage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor=resources.getColor(R.color.statusBarColor_2)
         supportActionBar?.title = "Upload Image"
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#A060EF"))) // Replace with your desired color
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#F73E7C"))) // Replace with your desired color
 
         // Enable the Up button (back button)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

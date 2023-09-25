@@ -4,4 +4,7 @@
         <!-- Add elevation (a drop shadow) -->
         <item name="android:elevation">8dp</item>
     </style>
+    <style name="NoBackgroundButton">
+        <item name="android:background">@null</item>
+    </style>
 </resources>
