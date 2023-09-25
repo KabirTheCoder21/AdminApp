@@ -3,14 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-<!--    Google authentication permissions-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,15 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdminApp"
         tools:targetApi="31">
-
-<!--        <activity-->
-<!--            android:name=".SignInActivity"-->
-<!--            android:exported="false" />-->
-
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-
         <activity
             android:name="com.example.notice.DeleteNotice"
             android:exported="false" />
@@ -52,10 +37,8 @@
         <activity
             android:name="com.example.notice.UploadNotice"
             android:exported="false" />
-        <activity android:name=".MainActivity"
-            android:exported="false"/>
         <activity
-            android:name=".SignInActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,15 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider
-            android:name="androidx.startup.InitializationProvider"
-            android:authorities="${applicationId}.androidx-startup"
-            android:exported="false"
-            tools:node="merge">
-            <meta-data
-                android:name="app.rive.runtime.kotlin.RiveInitializer"
-                android:value="androidx.startup" />
-        </provider>
     </application>
 
 </manifest>
