@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     // Sign-out from your app's Firebase Authentication
                     FirebaseAuth.getInstance().signOut()
-
                     progressDialog.dismiss()
                     // Redirect to sign-in screen
                     val intent = Intent(this, SignInActivity::class.java)
